@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.QRProcessing_QRScanner" BackgroundColor="#262626">
+    
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Margin="5,5,5,5" HeightRequest="350">
+            <zxing:ZXingScannerView IsScanning="True" Result="{Binding Result}" ScanResultCommand="{Binding QRScanResultCmd}"/>
+            <Button Text="CANCEL" Command="{Binding CancelCmd}" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

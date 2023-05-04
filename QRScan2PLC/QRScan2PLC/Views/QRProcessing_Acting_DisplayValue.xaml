@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:QRScan2PLC.Utils;assembly=QRScan2PLC"
+             x:Class="QRScan2PLC.Views.QRProcessing_Acting_DisplayValue">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Label HorizontalTextAlignment="Start"  TextColor="White">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0}   {1}">
+                        <Binding Path="DataPLC.Description"/>
+                        <Binding Path="uom"/>
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" OutlineColor="Gray">
+                <Grid BackgroundColor="#1a1a1a">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" IsVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding BoolValueVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Label Text="{Binding DataPLC.DeviceAdr.addressBoolean.ActualValue}" TextColor="White" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    </Grid>
+                    <Grid Grid.Column="0" IsVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding IntValueVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Label Text="{Binding DataPLC.DeviceAdr.addressInteger.ActualValue}" TextColor="White" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    </Grid>
+                    <Grid Grid.Column="0" IsVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding FloatValueVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Label Text="{Binding DataPLC.DeviceAdr.addressReal.ActualValue}" TextColor="White" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    </Grid>
+                    <Grid Grid.Column="0" IsVisible="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding StringValueVisible}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Grid.Triggers>
+                        <Label Text="{Binding DataPLC.DeviceAdr.addressString.ActualValue}" TextColor="White" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    </Grid>                    
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

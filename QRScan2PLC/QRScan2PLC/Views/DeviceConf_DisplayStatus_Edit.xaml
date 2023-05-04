@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.DeviceConf_DisplayStatus_Edit" BackgroundColor="#262626">
+
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Vertical" Grid.Column="0">
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="VALUE"/>
+                <Frame HeightRequest="40" WidthRequest="60" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding StatusList.StatusSelected.Value}"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Column="1">
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DESCRIPTION"/>
+                <Frame HeightRequest="40" WidthRequest="240" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding StatusList.StatusSelected.Description}"/>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+
+</ContentView>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.DeviceConf_SiemensEnablePLCFunction" BackgroundColor="#262626">
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Margin="20,10,20,10">
+            <StackLayout Orientation="Horizontal" Margin="0,5,5,5">
+                <StackLayout Orientation="Vertical">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DB"/>
+                    <Frame HeightRequest="40" WidthRequest="90" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding EnableFunctionsPLC.DB}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="10,0,0,0">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="BYTE"/>
+                    <Frame HeightRequest="40" WidthRequest="90" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding EnableFunctionsPLC.Byte}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="10,0,0,0">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="BIT"/>
+                    <Frame HeightRequest="40" WidthRequest="90" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding EnableFunctionsPLC.Bit}"/>
+                    </Frame>
+                </StackLayout>                
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

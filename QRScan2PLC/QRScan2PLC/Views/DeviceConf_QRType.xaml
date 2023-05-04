@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="QRScan2PLC.Views.DeviceConf_QRType"
+             xmlns:local="clr-namespace:QRScan2PLC.Utils;assembly=QRScan2PLC"
+             BackgroundColor="#373737">
+    <ScrollView>
+        <StackLayout Orientation="Vertical" Margin="20,20,20,20" HeightRequest="700">
+        <StackLayout Orientation="Vertical">
+            <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="NAME"/>
+            <Frame HeightRequest="40" WidthRequest="360" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                <Entry BackgroundColor="White" TextColor="Black" Text="{Binding QRtypeSelected.Name}"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" Margin="0,10,0,0">
+            <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="CONDITION"/>
+            <StackLayout BackgroundColor="#262626">
+                <StackLayout Orientation="Vertical" Margin="10,5,10,5">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="CODE LENGHT"/>
+                    <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding QRtypeSelected.Condition.qrstringlenght}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="10,15,10,10">
+                    <StackLayout Orientation="Vertical" Grid.Column="0">
+                        <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="SUBSTRING"/>
+                        <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                            <Entry BackgroundColor="White" TextColor="Black" Text="{Binding QRtypeSelected.Condition.substring}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Column="1">
+                        <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="POSITION"/>
+                        <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                            <Entry BackgroundColor="White" TextColor="Black" Text="{Binding QRtypeSelected.Condition.substringpos}"/>
+                        </Frame>
+                    </StackLayout>                    
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DATA LIST INTERFACE"/>
+            <StackLayout Orientation="Horizontal">
+                <ListView x:Name="DataList" Margin="0" HeightRequest="140" android:ListView.IsFastScrollEnabled="true" ItemsSource="{Binding QRtypeSelected.DataList}" SelectedItem="{Binding DataPLCSelected}" BackgroundColor="#262626">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell x:Name="Element" Height="15" Tapped="ViewCell_Tapped">
+                                <ViewCell.View >
+                                    <Grid BackgroundColor="#4d4d4d">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="Description" Text="{Binding Name}" FontSize="Medium" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Column="0">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Element},Path=View.BackgroundColor}" Value="#e6e6e6">
+                                                    <Setter Property="TextColor" Value="Black"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout WidthRequest="60" Orientation="Vertical">
+                    <ImageButton Source="{local:ImageResource QRScan2PLC.Resources.arrowup.png}" WidthRequest="60" HeightRequest="60" Command="{Binding DatalistMoveUpCmd}"/>
+                    <ImageButton Source="{local:ImageResource QRScan2PLC.Resources.arrowdown.png}" WidthRequest="60" HeightRequest="60" Command="{Binding DatalistMoveDownCmd}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="NEW"  Text="NEW" Command="{Binding NewDataPLCCmd}" Grid.Column="0"/>
+            <Button x:Name="EDIT"  Text="EDIT" Command="{Binding EditDataPLCCmd}" Grid.Column="1"/>
+            <Button x:Name="DELETE"  Text="DELETE" Command="{Binding DeleteDataPLCCmd}"  Grid.Column="2"/>
+        </Grid>
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="SAVE" Text="SAVE" Command="{Binding SaveCmd}" Grid.Column="0"/>
+            <Button x:Name="BACK" Text="BACK" Command="{Binding BackCmd}" Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

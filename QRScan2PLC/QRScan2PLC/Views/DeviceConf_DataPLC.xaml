@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.DeviceConf_DataPLC"
+             BackgroundColor="#373737">
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Margin="0,5,0,0">
+        <StackLayout Orientation="Vertical">
+            <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="NAME"/>
+                <Frame HeightRequest="40" WidthRequest="320" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding DataPLC.Name}"/>
+                </Frame>
+            </StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DESCRIPTION"/>
+                <Frame HeightRequest="40" WidthRequest="320" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding DataPLC.Description}"/>
+                </Frame>
+            </StackLayout>        
+        <StackLayout Orientation="Vertical" Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="ACTING DATA" Grid.Column="0"/>
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="{Binding DataPLC.Acting.Type}" Grid.Column="1"/>
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="{Binding DataPLC.Type}" Grid.Column="2"/>
+            </Grid>
+            <ContentView prism:RegionManager.RegionName="ActingRegion"/>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="COMMUNICATION ADDRESS" Grid.Column="0"/>
+            </Grid>
+            <ContentView prism:RegionManager.RegionName="AddressRegion"/>
+        </StackLayout>
+        </StackLayout>
+   </ContentView.Content>
+</ContentView>

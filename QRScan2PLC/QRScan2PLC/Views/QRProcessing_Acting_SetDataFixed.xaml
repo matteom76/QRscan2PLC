@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:QRScan2PLC.Utils;assembly=QRScan2PLC"
+             x:Class="QRScan2PLC.Views.QRProcessing_Acting_SetDataFixed">
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding DataPLC.Description}" HorizontalTextAlignment="Start"  TextColor="White"/>
+            <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" OutlineColor="Gray">
+                <Grid BackgroundColor="#1a1a1a">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="240*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding OperationData}" TextColor="White" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Image Source="{local:ImageResource QRScan2PLC.Resources.lock.png}" IsVisible="True" Grid.Column="1">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding EnableFunctionsPLC.ActualValue}" Value="True">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Image Source="{local:ImageResource QRScan2PLC.Resources.error.png}" IsVisible="True" Grid.Column="2">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding OperationResult}" Value="True">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Image Source="{local:ImageResource QRScan2PLC.Resources.checked.png}" IsVisible="False" Grid.Column="2">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding OperationResult}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+
+</ContentView>

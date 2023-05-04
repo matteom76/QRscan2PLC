@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:QRScan2PLC.Utils;assembly=QRScan2PLC"
+             x:Class="QRScan2PLC.Views.QRProcessing_Acting_Button">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{local:ImageResource QRScan2PLC.Resources.lock.png}" IsVisible="True" Grid.Column="0">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding EnableFunctionsPLC.ActualValue}" Value="True">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+            <Button Text="{Binding Btn.Label}" CornerRadius="5" Command="{Binding ButtonCmd}" Grid.Column="1">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="#d9d9d9" Offset="0.1" />
+                        <GradientStop Color="#bfbfbf" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding DataPLC.DeviceAdr.addressBoolean.ActualValue}" Value="true">
+                        <Setter Property="Background">
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="#ffffff" Offset="0.1" />
+                                <GradientStop Color="#f2f2f2" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

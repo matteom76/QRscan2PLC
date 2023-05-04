@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.DeviceConf_DisplayValue" BackgroundColor="#262626">
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Margin="5,10,5,10">
+            <StackLayout Orientation="Vertical">
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DESCRIPTION"/>
+                <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding Property.Description}"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="UOM"/>
+                <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Entry BackgroundColor="White" TextColor="Black" Text="{Binding Property.UOM}"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+
+</ContentView>

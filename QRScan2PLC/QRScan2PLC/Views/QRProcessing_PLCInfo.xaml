@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.QRProcessing_PLCInfo" BackgroundColor="Transparent">
+
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Frame HeightRequest="40" WidthRequest="60" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" Grid.Column="0">
+                <Label Text="{Binding TextDevice}" BackgroundColor="Red" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Device.ConnectionStatus}" Value="true">
+                            <Setter Property="BackgroundColor" Value="Green"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Frame>
+            <Frame HeightRequest="40" WidthRequest="80" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" Grid.Column="1">
+                <Label Text="LOCKED" BackgroundColor="#F1C40F" TextColor="Black"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HeightRequest="30">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding PlcInfo.EnableFunctions.ActualValue}" Value="true">
+                            <Setter Property="BackgroundColor" Value="Green"/>
+                            <Setter Property="TextColor" Value="White"/>
+                            <Setter Property="Text" Value="ENABLE"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+    
+</ContentView>

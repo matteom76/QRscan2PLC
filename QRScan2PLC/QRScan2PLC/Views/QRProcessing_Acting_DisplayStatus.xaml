@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True" 
+             x:Class="QRScan2PLC.Views.QRProcessing_Acting_DisplayStatus"
+             xmlns:converter="clr-namespace:QRScan2PLC.Utils">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:Acting_DisplayStatusConverter x:Key="DisplayStatusConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding DataPLC.Description}" HorizontalTextAlignment="Start"  TextColor="White"/>
+            <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" OutlineColor="Gray">
+                <Label BackgroundColor="#1a1a1a" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Label.Text>
+                        <MultiBinding Converter="{StaticResource DisplayStatusConverter}">
+                            <Binding Path="DataPLC.DeviceAdr.addressInteger.ActualValue"/>
+                            <Binding Path="displayStatus.StatusCodeList"/>
+                        </MultiBinding>
+                    </Label.Text>                
+                </Label>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

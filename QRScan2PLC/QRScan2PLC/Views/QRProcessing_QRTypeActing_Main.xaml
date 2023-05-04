@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.QRProcessing_QRTypeActing_Main" BackgroundColor="#262626">
+
+    <ContentView.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Margin="10,0,10,0" HeightRequest="500">
+                <StackLayout Orientation="Vertical" Margin="0,5,0,0">
+                    <Label TextColor="Gray" FontSize="Micro" HorizontalTextAlignment="Center" LineBreakMode="CharacterWrap" Text="{Binding QRFormat}" HeightRequest="13" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,1,0,0">
+                    <Label TextColor="White" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding TitleView}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0,1,0,0">
+                    <Label TextColor="Gray" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="CharacterWrap" Text="{Binding QRResult}" HeightRequest="26"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="0">
+                    <ContentView prism:RegionManager.RegionName="ActingRegion1" Margin="0,2,2,0"/>
+                    <ContentView prism:RegionManager.RegionName="ActingRegion2" Margin="0,2,2,0"/>
+                    <ContentView prism:RegionManager.RegionName="ActingRegion3" Margin="0,2,2,0"/>
+                    <ContentView prism:RegionManager.RegionName="ActingRegion4" Margin="0,2,2,0"/>
+                    <ContentView prism:RegionManager.RegionName="ActingRegion5" Margin="0,2,2,5"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+
+
+</ContentView>

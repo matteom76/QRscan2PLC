@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QRScan2PLC.Views.DeviceConf_SetDataFromCode" BackgroundColor="#262626">
+
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Margin="5,10,5,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical" Grid.Column="0">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="POSITION"/>
+                    <Frame HeightRequest="40" WidthRequest="80" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding Property.PositionStart}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Column="1">
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="LENGHT"/>
+                    <Frame HeightRequest="40" WidthRequest="80" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding Property.Lenght}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" IsVisible="False" Grid.Column="2">
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding DecimalNumberVisible}" Value="true">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger> 
+                    </StackLayout.Triggers>
+                    <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="DECIMAL"/>
+                    <Frame HeightRequest="40" WidthRequest="80" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                        <Entry BackgroundColor="White" TextColor="Black" Text="{Binding Property.DecimalNumber}"/>
+                    </Frame>
+                </StackLayout>                
+            </Grid>
+            <StackLayout Orientation="Vertical" Margin="0,0,0,0">
+                <Label TextColor="White" FontSize="Small" HorizontalTextAlignment="Start" Text="VISIBLE"/>
+                <Frame HeightRequest="40" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0">
+                    <Picker ItemsSource="{Binding VisibleType,Mode=TwoWay}" SelectedIndex="{Binding VisibleTypeSelected}" BackgroundColor="White" TextColor="Black">
+                        <Picker.Behaviors>
+                            <prism:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                          Command="{Binding VisibleSelectCmd}"/>
+                        </Picker.Behaviors>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+
+</ContentView>
