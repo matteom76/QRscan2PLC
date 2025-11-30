@@ -1,6 +1,7 @@
 # QRscan2PLC
 
-QRscan2PLC is a mobile application that allows you to connect your smartphone or tablet to Siemens PLC devices or to an MQTT broker and interact with them through customizable HMI-like interface screens.  
+QRscan2PLC is a mobile application developed using **.NET Xamarin Forms**, designed to run on smartphones and tablets.  
+It allows you to connect your mobile device to Siemens PLC devices or to an MQTT broker and interact with them through customizable HMI-like interface screens.  
 Each interface screen can be associated with a QR code or barcode, enabling immediate access simply by scanning the corresponding code.
 
 ---
@@ -55,6 +56,14 @@ Upon scanning a corresponding QR/barcode:
 
 ### ✔ MQTT
 - Any MQTT broker reachable via TCP
+
+---
+
+## 🛠 Technology Stack
+
+- **Framework:** .NET Xamarin Forms  
+- **Platforms:** Mobile (Android/iOS depending on project configuration)  
+- **Protocols:** TCP, MQTT  
 
 ---
 
