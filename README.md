@@ -67,8 +67,12 @@ Upon scanning a corresponding QR/barcode:
 
 ---
 
-## 📝 Notes
-QRscan2PLC is designed for flexibility in industrial environments, enabling rapid visualization and configuration of PLC/MQTT data through scan-based access.
+## 📘 User Manual
+
+You can find the full user manual here:
+
+➡️ [Download UserManual.pdf](./UserManual.pdf)
+
 
 ---
 
