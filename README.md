@@ -71,7 +71,7 @@ Upon scanning a corresponding QR/barcode:
 
 You can find the full user manual here:
 
-➡️ [Download UserManual.pdf](./UserManual.pdf)
+➡️ [Download QRscan2PLCTutorial.pdf](./QRscan2PLCTutorial.pdf)
 
 
 ---
